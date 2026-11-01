@@ -80,6 +80,105 @@ input,select,textarea{ min-height:44px; font-size:16px; } /* prevents iOS input 
   .card:hover,.btn:hover{transform:none;box-shadow:var(--shadow)}
 }
 
+
+/* GroceryPulse visual refresh v2 */
+:root{
+ --bg:#eef4f0;--card:#ffffff;--ink:#152b20;--muted:#718278;--line:#dce8df;
+ --green:#08784f;--pale:#e2f4e9;--red:#c94c48;--amber:#a86a17;
+ --surface:#f4f8f5;--shadow:0 14px 38px rgba(20,63,39,.09);
+}
+:root[data-theme="dark"]{
+ --bg:#0b1712;--card:#14241b;--ink:#eff8f1;--muted:#a1b5a8;--line:#2b4033;
+ --green:#58d39a;--pale:#1d3d2c;--red:#ff817b;--amber:#f3c16e;
+ --surface:#1a3023;--shadow:0 16px 38px rgba(0,0,0,.28);
+}
+body{
+ background:
+  radial-gradient(ellipse at 8% 0%,rgba(34,153,97,.10),transparent 32rem),
+  var(--bg);
+ color:var(--ink);letter-spacing:.005em;
+}
+.wrap{max-width:1280px;padding:24px 24px 100px}
+.top{
+ background:var(--card);border:1px solid var(--line);border-radius:22px;
+ padding:16px 20px;margin:0 0 18px;box-shadow:var(--shadow);
+}
+.brand b{font-size:22px;letter-spacing:-.8px}
+.brand .sub{letter-spacing:.09em;font-size:10px;font-weight:700}
+.logo{width:48px;height:48px;border-radius:16px;box-shadow:0 7px 18px rgba(8,120,79,.2)}
+.top-actions{gap:9px}
+.ui-control{border-radius:12px;padding:10px 13px;background:var(--surface);font-weight:750}
+#themeToggle{background:var(--pale);border-color:transparent;color:var(--green)}
+.tabs{
+ background:var(--card);border:1px solid var(--line);border-radius:17px;
+ padding:7px;margin:0 0 25px;box-shadow:0 6px 20px rgba(20,63,39,.045);
+}
+.tabs button{border-radius:12px;padding:12px 18px;font-size:13px}
+.tabs button.active{background:var(--green);color:#fff;box-shadow:0 5px 14px rgba(8,120,79,.22)}
+.heading{margin:4px 0 18px}
+.heading h2{font-size:25px;letter-spacing:-.8px}
+.heading .small{font-size:13px;margin-top:4px}
+.cards{gap:14px;margin-bottom:15px}
+.card{
+ border:1px solid var(--line);border-radius:19px;padding:19px;
+ box-shadow:var(--shadow);background:var(--card);
+}
+.cards>.card{position:relative;overflow:hidden}
+.cards>.card:before{
+ content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+ background:var(--green);opacity:.75
+}
+.metric{font-size:30px;letter-spacing:-1.2px}
+.label{font-size:12px;font-weight:700;letter-spacing:.025em;text-transform:uppercase}
+.section{margin-top:17px}
+.row{padding:15px 2px}
+.row b{font-size:14px}
+.btn{border-radius:12px;padding:11px 16px;background:var(--surface)}
+.btn.primary{background:linear-gradient(135deg,#078052,#0b6848);border:0;box-shadow:0 6px 15px rgba(8,120,79,.2)}
+.field{border-radius:13px;padding:13px 14px;background:var(--surface)}
+.note{border-radius:15px}
+.dialog{background:var(--card);border:1px solid var(--line);box-shadow:0 20px 70px #0003}
+.toolbar{gap:10px}
+.pill{background:var(--pale);color:var(--green);font-weight:700}
+#productChart{margin:14px 0 8px;padding:12px 10px 5px;background:var(--surface);border:1px solid var(--line);border-radius:15px;overflow:hidden}
+.chart{display:block;width:100%;height:210px;overflow:visible}
+.chart text{font-family:system-ui,-apple-system,Segoe UI,sans-serif;font-size:10px;fill:var(--muted)}
+.chart path:first-child{stroke:var(--line)}
+.chart path:nth-child(2){stroke:var(--green);stroke-width:3.5}
+.chart circle{fill:var(--green)}
+@media(min-width:900px){
+ .cards{gap:16px}.card{padding:21px}
+ .top{padding:18px 22px}
+}
+@media(max-width:649px){
+ .wrap{padding:12px 12px calc(92px + env(safe-area-inset-bottom))}
+ .top{border-radius:17px;padding:12px;margin:0 0 12px;align-items:center}
+ .brand b{font-size:18px}.brand .sub{font-size:9px}
+ .logo{width:42px;height:42px;border-radius:13px}
+ .top-actions{gap:5px}
+ .ui-control{font-size:11px;padding:8px 9px;min-height:40px}
+ .tabs{border-radius:14px;padding:5px;margin-bottom:20px;gap:3px}
+ .tabs button{padding:10px 13px;font-size:12px}
+ .heading h2{font-size:22px}
+ .cards{gap:9px}
+ .card{border-radius:16px;padding:14px}
+ .metric{font-size:24px}
+ .label{font-size:10px}
+ #productChart{padding:7px 4px}
+ .chart{height:175px}
+ .toolbar{flex-wrap:wrap}
+ .toolbar>*{flex:1 1 130px}
+}
+@media(prefers-reduced-motion:no-preference){
+ .card{animation:cardRise .45s both}
+ .card:nth-child(2){animation-delay:.04s}
+ .card:nth-child(3){animation-delay:.08s}
+ .card:nth-child(4){animation-delay:.12s}
+ .tabs button,.btn,.ui-control{transition:all .2s ease}
+ .tabs button:hover{transform:translateY(-1px)}
+}
+@keyframes cardRise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+
 </style></head><body><div id="authGate" style="position:fixed;inset:0;background:#f4f7f4;z-index:99;display:grid;place-items:center;padding:20px;font-family:system-ui"><form id="loginForm" style="background:white;border:1px solid #e3ebe5;border-radius:18px;padding:24px;width:min(100%,390px)"><h2 style="margin:0 0 6px;color:#172b22">🛒 GroceryPulse</h2><p style="color:#718078;font-size:13px;margin:0 0 20px">Sign in to Lakshmi Stores shared inventory</p><label style="font-size:13px">Email<input id="loginEmail" type="email" required autocomplete="username" style="display:block;width:100%;box-sizing:border-box;padding:12px;margin:6px 0 14px;border:1px solid #dce5de;border-radius:10px"></label><label style="font-size:13px">Password<input id="loginPassword" type="password" required autocomplete="current-password" style="display:block;width:100%;box-sizing:border-box;padding:12px;margin:6px 0 14px;border:1px solid #dce5de;border-radius:10px"></label><button id="loginButton" type="submit" style="width:100%;padding:12px;background:#176b48;color:white;border:0;border-radius:10px;font-weight:700">Sign in</button><p id="loginMessage" role="status" style="font-size:12px;color:#c44b43;margin:12px 0 0"></p></form></div><main class="wrap">
 <header class="top"><div class="brand"><div class="logo">🛒</div><div><b>GroceryPulse</b><div class="sub">RETAIL PRICE INTELLIGENCE</div></div></div><div class="top-actions"><span class="pill">INR · ₹</span><button class="ui-control" id="themeToggle" type="button" aria-label="Toggle colour theme">☾ Dark</button><div class="zoom-controls" aria-label="Desktop zoom controls"><button class="ui-control" id="zoomOut" type="button" aria-label="Zoom out">A−</button><span class="zoom-label" id="zoomLabel">100%</span><button class="ui-control" id="zoomIn" type="button" aria-label="Zoom in">A+</button><button class="ui-control" id="zoomReset" type="button" aria-label="Reset zoom">Reset</button></div></div></header>
 <nav class="tabs" id="tabs"><button class="active" data-page="home">Overview</button><button data-page="products">Products</button><button data-page="history">Price history</button><button data-page="suppliers">Suppliers</button><button data-page="data">Data & backup</button></nav>
@@ -152,7 +251,7 @@ function persist(){localStorage.setItem('grocerypulse-v1',JSON.stringify(db));re
 function toast(s){$('toast').textContent=s;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),2200)}
 function margin(p){return p.selling>0?(p.selling-p.cost)/p.selling*100:0}
 function hist(id){return db.history.filter(x=>x.productId===id).sort((a,b)=>a.date.localeCompare(b.date))}
-function chart(items){if(!items.length)return'<div class="empty">No price records yet.</div>';let vals=items.map(x=>+x.cost),min=Math.min(...vals),max=Math.max(...vals);if(min===max){min*=.9;max*=1.1}let w=340,h=180,p=28,pts=vals.map((v,i)=>[p+i*(w-p*2)/Math.max(1,vals.length-1),h-p-(v-min)/(max-min)*(h-p*2)]),path=pts.map((v,i)=>(i?'L':'M')+v.join(',')).join(' ');return`<svg class="chart" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><path d="M${p} ${p}V${h-p}H${w-p}" fill="none" stroke="#dfe8e1"/><path d="${path}" fill="none" stroke="#176b48" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>${pts.map(v=>`<circle cx="${v[0]}" cy="${v[1]}" r="3" fill="#176b48"/>`).join('')}<text x="2" y="${p}">${fmt(max)}</text><text x="2" y="${h-p-2}">${fmt(min)}</text><text x="${p}" y="${h-5}">${esc(items[0].date.slice(5))}</text><text x="${w-p}" y="${h-5}" text-anchor="end">${esc(items.at(-1).date.slice(5))}</text></svg>`}
+function chart(items){if(!items.length)return'<div class="empty">No price records yet.</div>';let vals=items.map(x=>+x.cost),min=Math.min(...vals),max=Math.max(...vals);if(min===max){min*=.9;max*=1.1}let w=340,h=180,p=28,pts=vals.map((v,i)=>[p+i*(w-p*2)/Math.max(1,vals.length-1),h-p-(v-min)/(max-min)*(h-p*2)]),path=pts.map((v,i)=>(i?'L':'M')+v.join(',')).join(' ');return`<svg class="chart" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet"><path d="M${p} ${p}V${h-p}H${w-p}" fill="none" stroke="#dfe8e1"/><path d="${path}" fill="none" stroke="#176b48" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>${pts.map(v=>`<circle cx="${v[0]}" cy="${v[1]}" r="3" fill="#176b48"/>`).join('')}<text x="${p}" y="${p-7}" text-anchor="start">${fmt(max)}</text><text x="${p}" y="${h-p-7}" text-anchor="start">${fmt(min)}</text><text x="${p}" y="${h-5}">${esc(items[0].date.slice(5))}</text><text x="${w-p}" y="${h-5}" text-anchor="end">${esc(items.at(-1).date.slice(5))}</text></svg>`}
 function renderHome(){let ps=db.products.filter(p=>p.active);$('mProducts').textContent=ps.length;$('mStock').textContent=fmt(ps.reduce((s,p)=>s+p.cost*p.stock,0));$('mMargin').textContent=(ps.length?ps.reduce((s,p)=>s+margin(p),0)/ps.length:0).toFixed(1)+'%';$('mRising').textContent=ps.filter(p=>{let a=hist(p.id);return a.length>1&&a.at(-1).cost>a.at(-2).cost}).length;let dates=[...new Set(db.history.map(h=>h.date))].sort().slice(-30),series=dates.map(date=>({date,cost:db.history.filter(h=>h.date===date).reduce((s,h,a,arr)=>s+h.cost/arr.length,0)}));$('overviewChart').innerHTML=chart(series);let watch=ps.filter(p=>p.stock<=p.reorder||margin(p)<15).sort((a,b)=>a.stock/a.reorder-b.stock/b.reorder);$('watch').innerHTML=watch.slice(0,7).map(p=>`<div class="row"><div class="product"><b>${esc(p.name)}</b><div class="small">${p.stock<=p.reorder?'<span class="amber">Low stock</span>':'Margin below 15%'} · ${esc(p.category)}</div></div><div class="right"><b>${fmt(p.cost)}</b><div class="small">${margin(p).toFixed(1)}% margin</div></div></div>`).join('')||'<div class="empty">No low-stock or low-margin alerts.</div>';let recent=[...db.history].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,5);$('recent').innerHTML=recent.map(h=>`<div class="row"><div><b>${esc(db.products.find(p=>p.id===h.productId)?.name||'Removed product')}</b><div class="small">${esc(h.date)} · ${esc(h.supplier||'')}</div></div><b>${fmt(h.cost)}</b></div>`).join('')||'<div class="empty">No price updates yet.</div>'}
 function renderProducts(){let cats=[...new Set(db.products.map(p=>p.category))],old=$('cat').value;$('cat').innerHTML='<option value="">All categories</option>'+cats.map(x=>`<option>${esc(x)}</option>`).join('');$('cat').value=cats.includes(old)?old:'';let q=$('search').value.toLowerCase(),cat=$('cat').value,sort=$('sort').value,ps=db.products.filter(p=>p.active&&(!cat||p.category===cat)&&[p.name,p.category,p.supplier].join(' ').toLowerCase().includes(q));ps.sort((a,b)=>sort==='cost'?b.cost-a.cost:sort==='margin'?margin(b)-margin(a):a.name.localeCompare(b.name));$('productList').innerHTML=ps.map(p=>`<div class="row"><div class="product"><b>${esc(p.name)}</b><div class="small">${esc(p.category)} · ${esc(p.unit)} · Stock ${p.stock}</div><div class="small">${esc(p.supplier||'No supplier')}</div></div><div class="right"><b>${fmt(p.cost)} <span class="small">→ ${fmt(p.selling)}</span></b><div class="small ${margin(p)<15?'red':'green'}">${margin(p).toFixed(1)}% gross margin</div><div class="actions"><button class="link" data-edit="${p.id}">Edit</button><button class="link" data-price="${p.id}">Update price</button></div></div></div>`).join('')||'<div class="empty">No products found.</div>'}
 function renderHistory(){let s=$('histSelect'),old=s.value;s.innerHTML=db.products.map(p=>`<option value="${p.id}">${esc(p.name)}</option>`).join('');if(db.products.some(p=>p.id===old))s.value=old;let p=db.products.find(p=>p.id===s.value);if(!p){$('productChart').innerHTML='<div class="empty">Add a product first.</div>';return}let a=hist(p.id),prev=a.length>1?a.at(-2):null,change=prev?(p.cost-prev.cost)/prev.cost*100:null;$('histCost').textContent=fmt(p.cost);$('histChange').textContent=change===null?'—':(change>0?'+':'')+change.toFixed(1)+'%';$('histChange').className='metric '+(change>0?'red':'green');$('productChart').innerHTML=chart(a);$('historyRows').innerHTML=[...a].reverse().map(h=>`<div class="row"><div><b>${esc(h.date)}</b><div class="small">${esc(h.supplier||'')} · Qty ${h.quantity??0}</div></div><div class="right"><b>${fmt(h.cost)}</b><div class="small">per ${esc(h.unit||p.unit)}</div></div></div>`).join('')||'<div class="empty">No records.</div>'}
